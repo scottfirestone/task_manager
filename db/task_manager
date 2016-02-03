@@ -1,12 +1,9 @@
 ---
 tasks:
-- id: 1
-  title: Walk the dog
-  description: Walk the dog yo!
-- id: 2
-  title: take out the trash
-  description: take out the trash yo!
-- id: 3
-  title: go to bed
-  description: jk lol
-total: 3
+- id: 7
+  title: another thing
+  description: the second thing I added!!
+- id: 8
+  title: I added another fucking thing
+  description: WOOOOOT
+total: 8
