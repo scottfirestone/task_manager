@@ -1,8 +1,6 @@
-require 'models/task_manager'
+require 'yaml/store'
 
 class TaskManagerApp < Sinatra::Base
-  set :root, File.expand_path("..", __dir__)
-  set :method_override, true
 
   get '/' do
     erb :dashboard
@@ -47,12 +45,17 @@ class TaskManagerApp < Sinatra::Base
     redirect "/tasks"
   end
 
-  error do
-    "404: that path does not exist"
+  not_found do
+    erb :error
   end
 
   def task_manager
-    database = YAML::Store.new('db/task_manager')
+    if ENV["RACK_ENV"] == "test"
+      database = YAML::Store.new('db/task_manager_test')
+    else
+      database = YAML::Store.new('db/task_manager')
+    end
     @task_manager ||= TaskManager.new(database)
   end
+
 end
